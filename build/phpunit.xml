@@ -9,6 +9,7 @@
 	cacheResult="false">
 	<testsuites>
 		<testsuite name="codekandis/base64-codec">
+			<directory suffix="Test.php">../tests/UnitTests</directory>
 		</testsuite>
 	</testsuites>
 	<filter>
