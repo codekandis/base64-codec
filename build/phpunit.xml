@@ -9,11 +9,15 @@
 	cacheResult="false">
 	<testsuites>
 		<testsuite name="codekandis/base64-codec">
+			<directory suffix="Test.php">../tests/UnitTests</directory>
 		</testsuite>
 	</testsuites>
 	<filter>
-		<whitelist processUncoveredFilesFromWhitelist="true">
+		<whitelist processUncoveredFilesFromWhitelist="false">
 			<directory suffix=".php">../src</directory>
+			<exclude>
+				<file>../src/Base64DecoderErrorCodesInterpreter.php</file>
+			</exclude>
 		</whitelist>
 	</filter>
 	<logging>
