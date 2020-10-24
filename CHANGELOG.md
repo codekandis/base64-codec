@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [keep a changelog][xtlink-keep-a-changelog]
 and this project adheres to [Semantic Versioning 2.0.0][xtlink-semantic-versioning].
 
+## [1.1.0] - 2020-10-24
+
+### Removes
+
+* composer package dependency `codekandis/error-messages-interpreter`
+
+### Adds
+
+* composer package dependency `codekandis/code-message-interpreter` [^1]
+
+
+[1.1.0]: https://github.com/codekandis/tiphy/compare/1.0.0...1.1.0
+
+--
 ## 1.0.0 - 2019-08-11
 
 ### Added
