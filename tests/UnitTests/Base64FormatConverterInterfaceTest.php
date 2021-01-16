@@ -3,9 +3,9 @@ namespace CodeKandis\Base64Codec\Tests\UnitTests;
 
 use ArrayIterator;
 use CodeKandis\Base64Codec\Base64FormatConverterInterface;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64FormatConverterInterfaceTest\Base64FormatConvertersWithBase64EncodedValuesAndExpectedBase64UriSafeEncodedValuesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64FormatConverterInterfaceTest\Base64FormatConvertersWithBase64UriSafeEncodedValuesAndExpectedBase64EncodedValuesDataProvider;
-use PHPUnit\Framework\TestCase;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64FormatConverterInterfaceTest\Base64FormatConvertersWithBase64EncodedValuesAndExpectedBase64UriSafeEncodedValuesDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64FormatConverterInterfaceTest\Base64FormatConvertersWithBase64UriSafeEncodedValuesAndExpectedBase64EncodedValuesDataProvider;
+use CodeKandis\PhpUnit\TestCase;
 
 /**
  * Represents the test case to test objects against the `Base64FormatConverterInterface`.
@@ -25,7 +25,7 @@ class Base64FormatConverterInterfaceTest extends TestCase
 
 	/**
 	 * Tests if `Base64FormatConverterInterface::convertToStandard()` converts correctly.
-	 * @param Base64FormatConverterInterface $base64FormatConverter The Base64 format guard to test.
+	 * @param Base64FormatConverterInterface $base64FormatConverter The Base64 format converter to test.
 	 * @param string $value The Base64 encoded value to convert.
 	 * @param string $expectedUriSafeValue The expected converted Base64 URI safe encoded value.
 	 * @dataProvider base64FormatConvertersWithBase64EncodedValuesAndExpectedBase64UriSafeEncodedValuesDataProvider
@@ -48,7 +48,7 @@ class Base64FormatConverterInterfaceTest extends TestCase
 
 	/**
 	 * Tests if `Base64FormatConverterInterface::convertToStandard()` converts correctly.
-	 * @param Base64FormatConverterInterface $base64FormatConverter The Base64 format guard to test.
+	 * @param Base64FormatConverterInterface $base64FormatConverter The Base64 format converter to test.
 	 * @param string $uriSafeValue The Base64 URI safe encoded value to convert.
 	 * @param string $expectedValue The expected converted Base64 encoded value.
 	 * @dataProvider base64FormatConvertersWithBase64UriSafeEncodedValuesAndExpectedBase64EncodedValuesDataProvider
