@@ -5,21 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [keep a changelog][xtlink-keep-a-changelog]
 and this project adheres to [Semantic Versioning 2.0.0][xtlink-semantic-versioning].
 
+## [2.0.0] - 2021-01-16
+
+### Updated
+
+* composer package dependencies
+  * removed
+    * `sensiolabs/security-checker`
+    * `phpunit/phpunit`
+    * `codekandis/code-message-interpreter`
+  * updated
+    * `php` [^7.4]
+  * added
+    * `codekandis/phpunit` [^2]
+    * `codekandis/constants-classes-translator` [^1]
+* refactored `Base64DecoderErrorCodesInterpreter` to `Base64DecoderErrorCodesTranslator`
+
+### Added
+
+* `PHPUnit` tests for the `Base64DecoderErrorCodesTranslator`
+
+[2.0.0]: https://github.com/codekandis/base64-codec/compare/1.1.0...2.0.0
+
+---
 ## [1.1.0] - 2020-10-24
 
-### Removes
+### Updated
 
-* composer package dependency `codekandis/error-messages-interpreter`
+* composer package dependencies
+  * removed
+    * `codekandis/error-messages-interpreter`
+  * added
+    * `codekandis/code-message-interpreter` [^1]
 
-### Adds
+[1.1.0]: https://github.com/codekandis/base64-codec/compare/1.0.0...1.1.0
 
-* composer package dependency `codekandis/code-message-interpreter` [^1]
-
-
-[1.1.0]: https://github.com/codekandis/tiphy/compare/1.0.0...1.1.0
-
---
-## 1.0.0 - 2019-08-11
+---
+## [1.0.0] - 2019-08-11
 
 ### Added
 
@@ -30,6 +52,8 @@ and this project adheres to [Semantic Versioning 2.0.0][xtlink-semantic-versioni
 * `Base64Decoder` decoding values from a Base64 or Base64 URI safe string
 * `PHPUnit` tests
 * `README.md`
+
+[1.0.0]: https://github.com/codekandis/base64-codec/tree/1.0.0
 
 
 
