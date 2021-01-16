@@ -54,9 +54,9 @@ $valueUriSafe = 'OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4r
 
 
 
-[xtlink-version-badge]: https://img.shields.io/badge/version-1.0.0-blue.svg
+[xtlink-version-badge]: https://img.shields.io/badge/version-development-blue.svg
 [xtlink-license-badge]: https://img.shields.io/badge/license-MIT-yellow.svg
-[xtlink-php-version-badge]: https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg
+[xtlink-php-version-badge]: https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg
 [xtlink-code-coverage-badge]: https://img.shields.io/badge/coverage-100%25-green.svg
 [xtlink-php-net]: https://php.net
 [xtlink-php-net-base64-encode]: https://www.php.net/manual/en/function.base64-encode.php
