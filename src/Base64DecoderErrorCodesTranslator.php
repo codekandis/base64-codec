@@ -1,14 +1,14 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
-use CodeKandis\ErrorCodesInterpreter\ErrorCodesInterpreter;
+use CodeKandis\ConstantsClassesTranslator\ConstantsClassesTranslator;
 
 /**
- * Represents a Base64 error codes interpreter.
+ * Represents a Base64 error codes translator.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
-class Base64DecoderErrorCodesInterpreter extends ErrorCodesInterpreter
+class Base64DecoderErrorCodesTranslator extends ConstantsClassesTranslator
 {
 	/**
 	 * Constructor method.
