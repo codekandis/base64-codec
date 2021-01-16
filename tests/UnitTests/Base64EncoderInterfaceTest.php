@@ -3,11 +3,9 @@ namespace CodeKandis\Base64Codec\Tests\UnitTests;
 
 use ArrayIterator;
 use CodeKandis\Base64Codec\Base64EncoderInterface;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64EncoderInterfaceTest\Base64EncodersWithDecodedValuesAndBase64UriSafeEncodedValuesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64EncoderInterfaceTest\Base64EncodersWithDecodedValuesAndBased64EncodedValuesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64EncoderInterfaceTest\Base64EncodersWithValidValuesAndEncodedUriSafeValuesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64EncoderInterfaceTest\Base64EncodersWithValidValuesAndEncodedValuesDataProvider;
-use PHPUnit\Framework\TestCase;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64EncoderInterfaceTest\Base64EncodersWithDecodedValuesAndBase64UriSafeEncodedValuesDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64EncoderInterfaceTest\Base64EncodersWithDecodedValuesAndBased64EncodedValuesDataProvider;
+use CodeKandis\PhpUnit\TestCase;
 
 /**
  * Represents the test case to test objects against the `Base64EncoderInterface`.

@@ -2,13 +2,12 @@
 namespace CodeKandis\Base64Codec\Tests\UnitTests;
 
 use ArrayIterator;
-use CodeKandis\Base64Codec\Base64DecoderInterface;
 use CodeKandis\Base64Codec\Base64FormatGuardInterface;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithInvalidBase64EncodedValuesExpectedExceptionsErrorCodesAndErrorMessagesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithInvalidBase64UriSafeEncodedValuesExpectedExceptionsErrorCodesAndErrorMessagesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithValidBase64EncodedValuesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithValidBase64UriSafeEncodedValuesDataProvider;
-use PHPUnit\Framework\TestCase;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithInvalidBase64EncodedValuesExpectedExceptionsErrorCodesAndErrorMessagesDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithInvalidBase64UriSafeEncodedValuesExpectedExceptionsErrorCodesAndErrorMessagesDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithValidBase64EncodedValuesDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64FormatGuardInterfaceTest\Base64FormatGuardsWithValidBase64UriSafeEncodedValuesDataProvider;
+use CodeKandis\PhpUnit\TestCase;
 
 /**
  * Represents the test case to test objects against the `Base64FormatGuardInterface`.
@@ -28,7 +27,7 @@ class Base64FormatGuardInterfaceTest extends TestCase
 
 	/**
 	 * Tests if `Base64FormatGuardInterface::guard()` executes without any exception.
-	 * @param Base64DecoderInterface $base64Decoder The Base64 format guard to test.
+	 * @param Base64FormatGuardInterface $base64FormatGuard The Base64 format guard to test.
 	 * @param string $validEncodedValue The valid Base64 encoded value to decode.
 	 * @dataProvider base64FormatGuardsWithValidBase64EncodedValuesDataProvider
 	 */
@@ -48,7 +47,7 @@ class Base64FormatGuardInterfaceTest extends TestCase
 
 	/**
 	 * Tests if `Base64FormatGuardInterface::guard()` executes without any exception.
-	 * @param Base64DecoderInterface $base64Decoder The Base64 format guard to test.
+	 * @param Base64FormatGuardInterface $base64FormatGuard The Base64 format guard to test.
 	 * @param string $validUriSafeEncodedValue The valid Base64 URI safe encoded value to decode.
 	 * @dataProvider base64FormatGuardsWithValidBase64UriSafeEncodedValuesDataProvider
 	 */

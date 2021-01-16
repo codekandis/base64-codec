@@ -1,5 +1,5 @@
 <?php declare( strict_types = 1 );
-namespace CodeKandis\Base64Codec\Tests\DataProviders\Base64DecoderInterfaceTest;
+namespace CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest;
 
 use ArrayIterator;
 use CodeKandis\Base64Codec\Base64Decoder;
