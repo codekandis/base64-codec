@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [keep a changelog][xtlink-keep-a-changelog]
 and this project adheres to [Semantic Versioning 2.0.0][xtlink-semantic-versioning].
 
+## [2.1.0] - 2021-01-18
+
+### Added
+
+* meaningful exceptions for every exceptional case
+
+### Updated
+
+* all data providers to test against the new exceptions
+
+[2.1.0]: https://github.com/codekandis/base64-codec/compare/2.0.0...2.1.0
+
+---
 ## [2.0.0] - 2021-01-17
 
 ### Updated
