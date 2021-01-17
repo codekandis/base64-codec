@@ -22,7 +22,7 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 		$isValid = 1 === preg_match( '~' . Base64Formats::STANDARD_FORMAT . '~', $value );
 		if ( false === $isValid )
 		{
-			throw new Base64Exception( Base64DecoderErrorMessages::BAD_BASE64_FORMAT, Base64DecoderErrorCodes::BAD_BASE64_FORMAT );
+			throw new ValueIsNotBase64FormattedException( Base64DecoderErrorMessages::BAD_BASE64_FORMAT, Base64DecoderErrorCodes::BAD_BASE64_FORMAT );
 		}
 	}
 
@@ -36,7 +36,7 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 		$isValid = 1 === preg_match( '~' . Base64Formats::URI_SAFE_FORMAT . '~', $value );
 		if ( false === $isValid )
 		{
-			throw new Base64Exception( Base64DecoderErrorMessages::BAD_BASE64_URI_SAFE_FORMAT, Base64DecoderErrorCodes::BAD_BASE64_URI_SAFE_FORMAT );
+			throw new ValueIsNotBase64UriSafeFormattedException( Base64DecoderErrorMessages::BAD_BASE64_URI_SAFE_FORMAT, Base64DecoderErrorCodes::BAD_BASE64_URI_SAFE_FORMAT );
 		}
 	}
 
@@ -53,7 +53,7 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 			: substr( $value, -$paddingModulo );
 		if ( '=' === $lastValueSegment[ 0 ] )
 		{
-			throw new Base64Exception( Base64DecoderErrorMessages::BAD_BASE64_PADDING, Base64DecoderErrorCodes::BAD_BASE64_PADDING );
+			throw new InvalidBase64PaddingException( Base64DecoderErrorMessages::BAD_BASE64_PADDING, Base64DecoderErrorCodes::BAD_BASE64_PADDING );
 		}
 	}
 
