@@ -12,7 +12,7 @@ use function base64_encode;
 class Base64Encoder implements Base64EncoderInterface
 {
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function encodeToStandard( string $value ): string
@@ -21,7 +21,7 @@ class Base64Encoder implements Base64EncoderInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function encodeToUriSafe( string $value ): string
