@@ -4,7 +4,7 @@ namespace CodeKandis\Base64Codec;
 use Override;
 
 /**
- * Represents an exception thrown if the padding of a Base64 value is invalid.
+ * Represents an exception if a value is not a standard Base64 value.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
@@ -12,7 +12,6 @@ class InvalidStandardBase64ValueException extends Base64Exception implements Inv
 {
 	/**
 	 * Represents the exception message if a value is not a standard Base64 value.
-	 * @var string
 	 */
 	public const string EXCEPTION_INVALID_STANDARD_BASE64_VALUE = 'The value is not a standard Base64 value.';
 

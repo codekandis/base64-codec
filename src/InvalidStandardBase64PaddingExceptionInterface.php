@@ -10,7 +10,6 @@ interface InvalidStandardBase64PaddingExceptionInterface extends Base64Exception
 {
 	/**
 	 * Static constructor method.
-	 * @return static
 	 */
 	public static function with_defaultMessage(): static;
 }

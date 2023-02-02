@@ -4,7 +4,7 @@ namespace CodeKandis\Base64Codec;
 use Override;
 
 /**
- * Represents an exception thrown if a value is not Base64 formatted.
+ * Represents an exception if a value is not a URI safe Base64 value.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
@@ -12,7 +12,6 @@ class InvalidUriSafeBase64ValueException extends Base64Exception implements Inva
 {
 	/**
 	 * Represents the exception message if a value is not a URI safe Base64 value.
-	 * @var string
 	 */
 	public const string EXCEPTION_INVALID_URI_SAFE_BASE64_VALUE = 'The value is not a URI safe Base64 value.';
 
