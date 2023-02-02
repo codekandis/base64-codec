@@ -13,7 +13,7 @@ use function base64_decode;
 class Base64Decoder extends BaseObject implements Base64DecoderInterface
 {
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function decodeFromStandard( string $value ): string
@@ -25,7 +25,7 @@ class Base64Decoder extends BaseObject implements Base64DecoderInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function decodeFromUriSafe( string $value ): string

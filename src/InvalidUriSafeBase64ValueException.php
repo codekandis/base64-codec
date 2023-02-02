@@ -4,7 +4,7 @@ namespace CodeKandis\Base64Codec;
 use CodeKandis\Types\InvalidValueException;
 
 /**
- * Represents an exception thrown if a value is not Base64 formatted.
+ * Represents an exception if a value is not a URI safe Base64 value.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */

@@ -4,7 +4,7 @@ namespace CodeKandis\Base64Codec;
 use CodeKandis\Types\InvalidValueException;
 
 /**
- * Represents an exception thrown if the padding of a Base64 value is invalid.
+ * Represents an exception if a value is not a standard Base64 value.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */

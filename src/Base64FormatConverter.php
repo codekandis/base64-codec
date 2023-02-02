@@ -25,7 +25,7 @@ class Base64FormatConverter extends BaseObject implements Base64FormatConverterI
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function convertToStandard( string $value ): string
@@ -46,7 +46,7 @@ class Base64FormatConverter extends BaseObject implements Base64FormatConverterI
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function convertToUriSafe( string $value ): string

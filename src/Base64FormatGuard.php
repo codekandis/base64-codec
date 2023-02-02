@@ -15,9 +15,9 @@ use function substr;
 class Base64FormatGuard extends BaseObject implements Base64FormatGuardInterface
 {
 	/**
-	 * Guards if a value is Base64 formatted.
+	 * Guards if a value is a standard Base64 value.
 	 * @param string $value The value to guard.
-	 * @throws InvalidStandardBase64ValueExceptionInterface The value is not Base64 formatted.
+	 * @throws InvalidStandardBase64ValueExceptionInterface The value is not a standard Base64 value.
 	 */
 	private function guardStandardCharSet( string $value ): void
 	{
@@ -29,9 +29,9 @@ class Base64FormatGuard extends BaseObject implements Base64FormatGuardInterface
 	}
 
 	/**
-	 * Guards if a value's padding is valid.
+	 * Guards if the padding of a standard Base64 value is valid.
 	 * @param string $value The value to guard.
-	 * @throws InvalidStandardBase64PaddingExceptionInterface The padding of the value is invalid.
+	 * @throws InvalidStandardBase64PaddingExceptionInterface The padding of the standard Base64 value is invalid.
 	 */
 	private function guardStandardPadding( string $value ): void
 	{
@@ -46,9 +46,9 @@ class Base64FormatGuard extends BaseObject implements Base64FormatGuardInterface
 	}
 
 	/**
-	 * Guards if a value is Base64 URI safe formatted.
+	 * Guards if a value is a URI safe Base64 value.
 	 * @param string $value The value to guard.
-	 * @throws InvalidUriSafeBase64ValueExceptionInterface The value is not Base64 URI safe formatted.
+	 * @throws InvalidUriSafeBase64ValueExceptionInterface The value is not a URI safe Base64 value.
 	 */
 	private function guardUriSafeCharSet( string $value ): void
 	{
@@ -60,7 +60,7 @@ class Base64FormatGuard extends BaseObject implements Base64FormatGuardInterface
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function guardStandard( string $value ): void
@@ -70,7 +70,7 @@ class Base64FormatGuard extends BaseObject implements Base64FormatGuardInterface
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * @inheritDoc
 	 */
 	#[Override]
 	public function guardUriSafe( string $value ): void
