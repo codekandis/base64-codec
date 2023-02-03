@@ -2,10 +2,10 @@
 namespace CodeKandis\Base64Codec;
 
 /**
- * Represents an exception thrown if a value is not Base64 URI safe formatted.
+ * Represents the interface of any exception if an error occurred during encoding into or decoding from any Base64 value.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
-class ValueIsNotBase64UriSafeFormattedException extends Base64Exception
+interface Base64ExceptionInterface
 {
 }
