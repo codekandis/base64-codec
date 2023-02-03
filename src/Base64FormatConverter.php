@@ -21,11 +21,33 @@ class Base64FormatConverter implements Base64FormatConverterInterface
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function convertGuardedToStandard( string $value ): string
+	{
+		( new Base64FormatGuard() )
+			->guardUriSafe( $value );
+
+		return str_replace( Base64Formats::URI_SAFE_UNIQUE_CHARACTER_SUBSET, Base64Formats::STANDARD_UNIQUE_CHARACTER_SUBSET, $value );
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	#[Override]
 	public function convertToUriSafe( string $value ): string
 	{
+		return str_replace( Base64Formats::STANDARD_UNIQUE_CHARACTER_SUBSET, Base64Formats::URI_SAFE_UNIQUE_CHARACTER_SUBSET, $value );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function convertGuardedToUriSafe( string $value ): string
+	{
+		( new Base64FormatGuard() )
+			->guardStandard( $value );
+
 		return str_replace( Base64Formats::STANDARD_UNIQUE_CHARACTER_SUBSET, Base64Formats::URI_SAFE_UNIQUE_CHARACTER_SUBSET, $value );
 	}
 }
