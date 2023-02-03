@@ -18,7 +18,7 @@ class Base64Decoder implements Base64DecoderInterface
 	public function decode( string $value ): string
 	{
 		( new Base64FormatGuard() )
-			->guard( $value );
+			->guardStandard( $value );
 
 		return base64_decode( $value, true );
 	}

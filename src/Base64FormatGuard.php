@@ -16,37 +16,23 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 	/**
 	 * Guards if a value is Base64 formatted.
 	 * @param string $value The value to guard.
-	 * @throws Base64Exception The value is not Base64 formatted.
+	 * @throws InvalidStandardBase64ValueExceptionInterface The value is not Base64 formatted.
 	 */
-	private function guardCharSet( string $value ): void
+	private function guardStandardCharSet( string $value ): void
 	{
 		$isValid = 1 === preg_match( '~' . Base64Formats::STANDARD_FORMAT . '~', $value );
 		if ( false === $isValid )
 		{
-			throw new ValueIsNotBase64FormattedException( Base64DecoderErrorMessages::BAD_BASE64_FORMAT, Base64DecoderErrorCodes::BAD_BASE64_FORMAT );
-		}
-	}
-
-	/**
-	 * Guards if a value is Base64 URI safe formatted.
-	 * @param string $value The value to guard.
-	 * @throws Base64Exception The value is not Base64 URI safe formatted.
-	 */
-	private function guardUriSafeCharSet( string $value ): void
-	{
-		$isValid = 1 === preg_match( '~' . Base64Formats::URI_SAFE_FORMAT . '~', $value );
-		if ( false === $isValid )
-		{
-			throw new ValueIsNotBase64UriSafeFormattedException( Base64DecoderErrorMessages::BAD_BASE64_URI_SAFE_FORMAT, Base64DecoderErrorCodes::BAD_BASE64_URI_SAFE_FORMAT );
+			throw new InvalidStandardBase64ValueException();
 		}
 	}
 
 	/**
 	 * Guards if a value's padding is valid.
 	 * @param string $value The value to guard.
-	 * @throws Base64Exception The padding of the value is invalid.
+	 * @throws InvalidStandardBase64PaddingExceptionInterface The padding of the value is invalid.
 	 */
-	private function guardPadding( string $value ): void
+	private function guardStandardPadding( string $value ): void
 	{
 		$paddingModulo    = strlen( $value ) % 4;
 		$lastValueSegment = 0 === $paddingModulo
@@ -54,7 +40,21 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 			: substr( $value, -$paddingModulo );
 		if ( '=' === $lastValueSegment[ 0 ] )
 		{
-			throw new InvalidBase64PaddingException( Base64DecoderErrorMessages::BAD_BASE64_PADDING, Base64DecoderErrorCodes::BAD_BASE64_PADDING );
+			throw new InvalidStandardBase64PaddingException();
+		}
+	}
+
+	/**
+	 * Guards if a value is Base64 URI safe formatted.
+	 * @param string $value The value to guard.
+	 * @throws InvalidUriSafeBase64ValueExceptionInterface The value is not Base64 URI safe formatted.
+	 */
+	private function guardUriSafeCharSet( string $value ): void
+	{
+		$isValid = 1 === preg_match( '~' . Base64Formats::URI_SAFE_FORMAT . '~', $value );
+		if ( false === $isValid )
+		{
+			throw new InvalidUriSafeBase64ValueException();
 		}
 	}
 
@@ -62,10 +62,10 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 	 * {@inheritDoc}
 	 */
 	#[Override]
-	public function guard( string $value ): void
+	public function guardStandard( string $value ): void
 	{
-		$this->guardCharSet( $value );
-		$this->guardPadding( $value );
+		$this->guardStandardCharSet( $value );
+		$this->guardStandardPadding( $value );
 	}
 
 	/**
