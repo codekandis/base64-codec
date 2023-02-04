@@ -29,8 +29,17 @@ The following examples show how to encode a value.
 ```php
 $value = '8ÇÂ<Ç<ï¯ñ×78B>ïAË¡4Wïc§ÿPîXø4\Êá¡t7?/SµÚ²·x}0¤¯ç»M';
 
-( new Base64Encoder() )->encode( $value );         // OMOHw4I8w4c8w6/Cr8Oxw5c3OEI+w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc/L1PCtcOawrLCt3h9MMKkwq/Dp8K7TQ==
-( new Base64Encoder() )->encodeUriSafe( $value );  // OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc_L1PCtcOawrLCt3h9MMKkwq_Dp8K7TQ
+( new Base64Encoder() )
+  ->encodeToStandard( $value );
+/**
+ * OMOHw4I8w4c8w6/Cr8Oxw5c3OEI+w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc/L1PCtcOawrLCt3h9MMKkwq/Dp8K7TQ==
+ */
+ 
+( new Base64Encoder() )
+  ->encodeToUriSafe( $value );
+/**
+ * OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc_L1PCtcOawrLCt3h9MMKkwq_Dp8K7TQ
+ */
 ```
 
 ### Decoding values
@@ -38,13 +47,21 @@ $value = '8ÇÂ<Ç<ï¯ñ×78B>ïAË¡4Wïc§ÿPîXø4\Êá¡t7?/SµÚ²·x}0¤�
 The following examples show how to decode a value.
 
 ```php
-$value = 'OMOHw4I8w4c8w6/Cr8Oxw5c3OEI+w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc/L1PCtcOawrLCt3h9MMKkwq/Dp8K7TQ==';
+$standardBase64Value = 'OMOHw4I8w4c8w6/Cr8Oxw5c3OEI+w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc/L1PCtcOawrLCt3h9MMKkwq/Dp8K7TQ==';
 
-( new Base64Decoder() )->decode( $value );  // 8ÇÂ<Ç<ï¯ñ×78B>ïAË¡4Wïc§ÿPîXø4\Êá¡t7?/SµÚ²·x}0¤¯ç»M 
+( new Base64Decoder() )
+  ->decodeFromStandard( $standardBase64Value );
+/**
+ * 8ÇÂ<Ç<ï¯ñ×78B>ïAË¡4Wïc§ÿPîXø4\Êá¡t7?/SµÚ²·x}0¤¯ç»M
+ */ 
 
-$valueUriSafe = 'OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc_L1PCtcOawrLCt3h9MMKkwq_Dp8K7TQ';
+$uriSafeBase64Value = 'OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4rDocKhdDc_L1PCtcOawrLCt3h9MMKkwq_Dp8K7TQ';
 
-( new Base64Decoder() )->decodeUriSafe( $valueUriSafe );  // 8ÇÂ<Ç<ï¯ñ×78B>ïAË¡4Wïc§ÿPîXø4\Êá¡t7?/SµÚ²·x}0¤¯ç»M
+( new Base64Decoder() )
+  ->decodeFromUriSafe( $uriSafeBase64Value );
+/**
+ * 8ÇÂ<Ç<ï¯ñ×78B>ïAË¡4Wïc§ÿPîXø4\Êá¡t7?/SµÚ²·x}0¤¯ç»M
+ */
 ```
 
 ## Differences to PHP's Base64 functions
@@ -55,7 +72,7 @@ $valueUriSafe = 'OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4r
 
 [xtlink-version-badge]: https://img.shields.io/badge/version-development-blue.svg
 [xtlink-license-badge]: https://img.shields.io/badge/license-MIT-yellow.svg
-[xtlink-php-version-badge]: https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg
+[xtlink-php-version-badge]: https://img.shields.io/badge/php-%3E%3D%208.3-8892BF.svg
 [xtlink-code-coverage-badge]: https://img.shields.io/badge/coverage-100%25-green.svg
 [xtlink-php-net]: https://php.net
 [xtlink-php-net-base64-encode]: https://www.php.net/manual/en/function.base64-encode.php
@@ -65,4 +82,3 @@ $valueUriSafe = 'OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDuDRcw4r
 [srclink-changelog]: ./CHANGELOG.md
 [srclink-license]: ./LICENSE
 [srclink-base64-decoder-interface]: ./src/Base64DecoderInterface.php
-[srclink-base64-decoder-options]: ./src/Base64DecoderOptions.php
