@@ -15,7 +15,7 @@ interface Base64DecoderInterface
 	 * @throws InvalidStandardBase64ValueExceptionInterface The value is not Base64 formatted.
 	 * @throws InvalidStandardBase64PaddingExceptionInterface The padding of the value is invalid.
 	 */
-	public function decode( string $value ): string;
+	public function decodeFromStandard( string $value ): string;
 
 	/**
 	 * Decodes a value from an URI safe Base64 string.
@@ -23,5 +23,5 @@ interface Base64DecoderInterface
 	 * @return string The decoded value.
 	 * @throws InvalidUriSafeBase64ValueExceptionInterface The value is not Base64 URI safe formatted.
 	 */
-	public function decodeUriSafe( string $value ): string;
+	public function decodeFromUriSafe( string $value ): string;
 }

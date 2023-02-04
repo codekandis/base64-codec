@@ -15,7 +15,7 @@ class Base64Encoder implements Base64EncoderInterface
 	 * {@inheritdoc}
 	 */
 	#[Override]
-	public function encode( string $value ): string
+	public function encodeToStandard( string $value ): string
 	{
 		return base64_encode( $value );
 	}
@@ -24,7 +24,7 @@ class Base64Encoder implements Base64EncoderInterface
 	 * {@inheritdoc}
 	 */
 	#[Override]
-	public function encodeUriSafe( string $value ): string
+	public function encodeToUriSafe( string $value ): string
 	{
 		$encodedValue = base64_encode( $value );
 

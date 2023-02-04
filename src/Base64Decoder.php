@@ -15,7 +15,7 @@ class Base64Decoder implements Base64DecoderInterface
 	 * {@inheritdoc}
 	 */
 	#[Override]
-	public function decode( string $value ): string
+	public function decodeFromStandard( string $value ): string
 	{
 		( new Base64FormatGuard() )
 			->guardStandard( $value );
@@ -27,7 +27,7 @@ class Base64Decoder implements Base64DecoderInterface
 	 * {@inheritdoc}
 	 */
 	#[Override]
-	public function decodeUriSafe( string $value ): string
+	public function decodeFromUriSafe( string $value ): string
 	{
 		( new Base64FormatGuard() )
 			->guardUriSafe( $value );
