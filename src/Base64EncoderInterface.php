@@ -14,7 +14,7 @@ interface Base64EncoderInterface
 	 * @param ?JsonEncoderOptions $options The encoding options.
 	 * @return string The encoded Base64 string.
 	 */
-	public function encode( string $value ): string;
+	public function encodeToStandard( string $value ): string;
 
 	/**
 	 * Encodes a value into an URI safe Base64 string.
@@ -22,5 +22,5 @@ interface Base64EncoderInterface
 	 * @param ?JsonEncoderOptions $options The encoding options.
 	 * @return string The encoded Base64 string.
 	 */
-	public function encodeUriSafe( string $value ): string;
+	public function encodeToUriSafe( string $value ): string;
 }
