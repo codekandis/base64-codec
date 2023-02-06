@@ -26,7 +26,7 @@ class Base64Encoder implements Base64EncoderInterface
 	#[Override]
 	public function encodeUriSafe( string $value ): string
 	{
-		$encodedValue = $this->encode( $value );
+		$encodedValue = base64_encode( $value );
 
 		return ( new Base64FormatConverter() )
 			->convertToUriSafe( $encodedValue );
