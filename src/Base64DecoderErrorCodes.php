@@ -12,17 +12,17 @@ abstract class Base64DecoderErrorCodes
 	 * The value is not Base64 formatted.
 	 * @var int
 	 */
-	public const BAD_BASE64_FORMAT = 1;
+	public const int BAD_BASE64_FORMAT = 1;
 
 	/**
 	 * The value is not Base64 URI safe formatted.
 	 * @var int
 	 */
-	public const BAD_BASE64_URI_SAFE_FORMAT = 2;
+	public const int BAD_BASE64_URI_SAFE_FORMAT = 2;
 
 	/**
 	 * The padding of the value is invalid.
 	 * @int int
 	 */
-	public const BAD_BASE64_PADDING = 3;
+	public const int BAD_BASE64_PADDING = 3;
 }
