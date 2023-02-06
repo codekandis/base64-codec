@@ -1,6 +1,7 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use Override;
 use function base64_encode;
 
 /**
@@ -13,6 +14,7 @@ class Base64Encoder implements Base64EncoderInterface
 	/**
 	 * {@inheritdoc}
 	 */
+	#[Override]
 	public function encode( string $value ): string
 	{
 		return base64_encode( $value );
@@ -21,6 +23,7 @@ class Base64Encoder implements Base64EncoderInterface
 	/**
 	 * {@inheritdoc}
 	 */
+	#[Override]
 	public function encodeUriSafe( string $value ): string
 	{
 		$encodedValue = $this->encode( $value );
