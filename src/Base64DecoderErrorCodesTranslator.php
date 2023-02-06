@@ -2,6 +2,7 @@
 namespace CodeKandis\Base64Codec;
 
 use CodeKandis\ConstantsClassesTranslator\ConstantsClassesTranslator;
+use Override;
 
 /**
  * Represents a Base64 error codes translator.

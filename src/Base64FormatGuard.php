@@ -1,6 +1,7 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use Override;
 use function preg_match;
 use function strlen;
 use function substr;
@@ -60,6 +61,7 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 	/**
 	 * {@inheritDoc}
 	 */
+	#[Override]
 	public function guard( string $value ): void
 	{
 		$this->guardCharSet( $value );
@@ -69,6 +71,7 @@ class Base64FormatGuard implements Base64FormatGuardInterface
 	/**
 	 * {@inheritDoc}
 	 */
+	#[Override]
 	public function guardUriSafe( string $value ): void
 	{
 		$this->guardUriSafeCharSet( $value );
