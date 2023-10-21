@@ -1,13 +1,14 @@
 {
 	"name": "codekandis/base64-codec",
-	"description": "This library provides a codec to encode into and decode from Base64 in an object oriented way.",
+	"description": "`codekandis/base64-codec` is a library providing a codec to encode into and decode from Base64 in an object oriented way.",
+	"version": "dev-development",
 	"keywords": [
 		"php",
 		"base64 codec",
 		"base64",
 		"codec",
-		"encode",
-		"decode"
+		"encoder",
+		"decoder"
 	],
 	"minimum-stability": "stable",
 	"prefer-stable": true,
@@ -27,12 +28,13 @@
 		"source": "https://github.com/codekandis/base64-codec/tree/master"
 	},
 	"require": {
-		"php": "^7.4",
-		"codekandis/constants-classes-translator": "^1"
+		"php": ">=8.3",
+		"codekandis/types": "^1.0.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-master",
-		"codekandis/phpunit": "^3"
+		"codekandis/phpunit": "^5.0.0",
+		"rector/rector": "^1.0.5"
 	},
 	"autoload": {
 		"psr-4": {
@@ -43,11 +45,12 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
+			"CodeKandis\\Base64Codec\\Build\\": [
+				"build/"
+			],
 			"CodeKandis\\Base64Codec\\Tests\\": [
 				"tests/"
 			]
 		}
-	},
-	"scripts": {
 	}
 }
