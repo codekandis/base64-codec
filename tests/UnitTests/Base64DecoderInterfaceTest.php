@@ -1,118 +1,141 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec\Tests\UnitTests;
 
-use ArrayIterator;
 use CodeKandis\Base64Codec\Base64DecoderInterface;
-use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithInvalidBase64EncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithInvalidBase64UriSafeEncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithValidBase64EncodedValuesAndDecodedValuesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithValidBase64UriSafeEncodedValuesAndDecodedValuesDataProvider;
+use CodeKandis\Base64Codec\InvalidStandardBase64PaddingExceptionInterface;
+use CodeKandis\Base64Codec\InvalidStandardBase64ValueExceptionInterface;
+use CodeKandis\Base64Codec\InvalidUriSafeBase64ValueExceptionInterface;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithInvalidStandardBase64PaddedValueExpectedThrowableClassNameAndExpectedThrowableMessageDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithInvalidStandardBase64ValueExpectedThrowableClassNameAndExpectedThrowableMessageDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithInvalidUriSafeBase64ValueExpectedThrowableClassNameAndExpectedThrowableMessageDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithValidStandardBase64PaddedValueAndExpectedDecodedValueDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithValidStandardBase64ValueAndExpectedDecodedValueDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64DecoderInterfaceTest\Base64DecodersWithValidUriSafeBase64ValueAndExpectedDecodedValueDataProvider;
 use CodeKandis\PhpUnit\TestCase;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use Throwable;
 
 /**
- * Represents the test case to test objects against the `Base64DecoderInterface`.
+ * Represents the test case of `CodeKandis\Base64Codec\Base64DecoderInterface`.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
 class Base64DecoderInterfaceTest extends TestCase
 {
 	/**
-	 * Provides initiated Base64 decoders with valid Base64 encoded values and decoded values.
-	 * @return ArrayIterator The initiated Base64 decoders with valid Base64 encoded values and decoded values.
-	 */
-	public function base64DecodersWithValidBase64EncodedValuesAndDecodedValuesDataProvider(): ArrayIterator
-	{
-		return new Base64DecodersWithValidBase64EncodedValuesAndDecodedValuesDataProvider();
-	}
-
-	/**
-	 * Tests if `Base64DecoderInterface::decode()` decodes correctly.
+	 * Tests if the method `Base64DecoderInterface::decodeFromStandard()` throws a `CodeKandis\Base64Codec\InvalidStandardBase64ValueExceptionInterface` if a value is not a standard Base64 value.
 	 * @param Base64DecoderInterface $base64Decoder The Base64 decoder to test.
-	 * @param mixed $validEncodedValue The Base64 encoded value to decode.
-	 * @param mixed $expectedDecodedValue The expected decoded value.
-	 * @dataProvider base64DecodersWithValidBase64EncodedValuesAndDecodedValuesDataProvider
+	 * @param string $invalidStandardBase64Value The invalid standard Base64 value to pass.
+	 * @param string $expectedThrowableClassName The class name of the expected throwable.
+	 * @param string $expectedThrowableMessage The message of the expected throwable.
 	 */
-	public function testDecodeDecodesCorrectly( Base64DecoderInterface $base64Decoder, string $validEncodedValue, $expectedDecodedValue ): void
+	#[DataProviderExternal( Base64DecodersWithInvalidStandardBase64ValueExpectedThrowableClassNameAndExpectedThrowableMessageDataProvider::class, 'provideData' )]
+	public function testIfMethodDecodeFromStandardThrowsInvalidStandardBase64ValueExceptionInterfaceOnInvalidStandardBase64Value( Base64DecoderInterface $base64Decoder, string $invalidStandardBase64Value, string $expectedThrowableClassName, string $expectedThrowableMessage ): void
 	{
-		$resultedDecodedValue = $base64Decoder->decode( $validEncodedValue );
-
-		$this->assertEquals( $expectedDecodedValue, $resultedDecodedValue );
+		try
+		{
+			$base64Decoder->decodeFromStandard( $invalidStandardBase64Value );
+		}
+		catch ( Throwable $throwable )
+		{
+			static::assertInstanceOf( InvalidStandardBase64ValueExceptionInterface::class, $throwable );
+			static::assertInstanceOf( $expectedThrowableClassName, $throwable );
+			static::assertSame(
+				$expectedThrowableMessage,
+				$throwable->getMessage()
+			);
+		}
 	}
 
 	/**
-	 * Provides initiated Base64 decoders with valid Base64 URI safe encoded values and decoded values.
-	 * @return ArrayIterator The initiated Base64 decoders with valid Base64 URI safe encoded values and decoded values.
-	 */
-	public function base64DecodersWithValidBase64UriSafeEncodedValuesAndDecodedValuesDataProvider(): ArrayIterator
-	{
-		return new Base64DecodersWithValidBase64UriSafeEncodedValuesAndDecodedValuesDataProvider();
-	}
-
-	/**
-	 * Tests if `Base64DecoderInterface::decodeUriSafe()` decodes correctly.
+	 * Tests if the method `Base64DecoderInterface::decodeFromStandard()` throws a `CodeKandis\Base64Codec\InvalidStandardBase64PaddingExceptionInterface` if a value is not a standard Base64 padded value.
 	 * @param Base64DecoderInterface $base64Decoder The Base64 decoder to test.
-	 * @param mixed $validUriSafeEncodedValue The valid Base64 URI safe encoded value to decode.
-	 * @param mixed $expectedDecodedValue The expected decoded value.
-	 * @dataProvider base64DecodersWithValidBase64UriSafeEncodedValuesAndDecodedValuesDataProvider
+	 * @param string $invalidStandardBase64PaddedValue The invalid standard Base64 padded value to pass.
+	 * @param string $expectedThrowableClassName The class name of the expected throwable.
+	 * @param string $expectedThrowableMessage The message of the expected throwable.
 	 */
-	public function testDecodeUriSafeDecodesCorrectly( Base64DecoderInterface $base64Decoder, string $validUriSafeEncodedValue, $expectedDecodedValue ): void
+	#[DataProviderExternal( Base64DecodersWithInvalidStandardBase64PaddedValueExpectedThrowableClassNameAndExpectedThrowableMessageDataProvider::class, 'provideData' )]
+	public function testIfMethodDecodeFromStandardThrowsInvalidStandardBase64PaddingExceptionInterfaceOnInvalidStandardBase64PaddedValue( Base64DecoderInterface $base64Decoder, string $invalidStandardBase64PaddedValue, string $expectedThrowableClassName, string $expectedThrowableMessage ): void
 	{
-		$resultedDecodedValue = $base64Decoder->decodeUriSafe( $validUriSafeEncodedValue );
-
-		$this->assertEquals( $expectedDecodedValue, $resultedDecodedValue );
+		try
+		{
+			$base64Decoder->decodeFromStandard( $invalidStandardBase64PaddedValue );
+		}
+		catch ( Throwable $throwable )
+		{
+			static::assertInstanceOf( InvalidStandardBase64PaddingExceptionInterface::class, $throwable );
+			static::assertInstanceOf( $expectedThrowableClassName, $throwable );
+			static::assertSame(
+				$expectedThrowableMessage,
+				$throwable->getMessage()
+			);
+		}
 	}
 
 	/**
-	 * Provides initiated Base64 decoders with invalid Base64 encoded values and expected exceptions, error codes and error messages.
-	 * @return ArrayIterator The initiated Base64 decoders with invalid Base64 encoded values and expected exceptions, error codes and error messages.
-	 */
-	public function base64DecodersWithInvalidBase64EncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider(): ArrayIterator
-	{
-		return new Base64DecodersWithInvalidBase64EncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider();
-	}
-
-	/**
-	 * Tests if `Base64DecoderInterface::decode()` throws an exception while an error occurred.
+	 * Tests if the method `Base64DecoderInterface::decodeFromStandard()` decodes a standard Base64 value correctly.
 	 * @param Base64DecoderInterface $base64Decoder The Base64 decoder to test.
-	 * @param string $invalidEncodedValue The invalid Base64 encoded value to decode.
-	 * @param string $expectedExceptionClass The class name of the expected exception.
-	 * @param int $expectedErrorCode The error code of the expected exception.
-	 * @param string $expectedErrorMessage The error message of the expected exception.
-	 * @dataProvider base64DecodersWithInvalidBase64EncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider
+	 * @param string $validStandardBase64Value The valid standard Base64 value to pass.
+	 * @param string $expectedDecodedValue The expected decoded value.
 	 */
-	public function testDecodeThrowsExceptionOnError( Base64DecoderInterface $base64Decoder, string $invalidEncodedValue, string $expectedExceptionClass, int $expectedErrorCode, string $expectedErrorMessage ): void
+	#[DataProviderExternal( Base64DecodersWithValidStandardBase64ValueAndExpectedDecodedValueDataProvider::class, 'provideData' )]
+	public function testIfMethodDecodeFromStandardDecodesValidStandardBase64ValueCorrectly( Base64DecoderInterface $base64Decoder, string $validStandardBase64Value, string $expectedDecodedValue ): void
 	{
-		$this->expectException( $expectedExceptionClass );
-		$this->expectExceptionCode( $expectedErrorCode );
-		$this->expectExceptionMessage( $expectedErrorMessage );
+		$resultedDecodedValue = $base64Decoder->decodeFromStandard( $validStandardBase64Value );
 
-		$base64Decoder->decode( $invalidEncodedValue );
+		static::assertEquals( $expectedDecodedValue, $resultedDecodedValue );
 	}
 
 	/**
-	 * Provides initiated Base64 decoders with invalid Base64 URI safe encoded values and expected exceptions, error codes and error messages.
-	 * @return ArrayIterator The initiated Base64 decoders with invalid Base64 URI safe encoded values and expected exceptions, error codes and error messages.
-	 */
-	public function base64DecodersWithInvalidBase64UriSafeEncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider(): ArrayIterator
-	{
-		return new Base64DecodersWithInvalidBase64UriSafeEncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider();
-	}
-
-	/**
-	 * Tests if `Base64DecoderInterface::decodeUriSafe()` throws an exception while an error occurred.
+	 * Tests if the method `Base64DecoderInterface::decodeFromStandard()` decodes a standard Base64 padded value correctly.
 	 * @param Base64DecoderInterface $base64Decoder The Base64 decoder to test.
-	 * @param string $invalidUriSafeEncodedValue The invalid Base64 URI safe encoded value to decode.
-	 * @param string $expectedExceptionClass The class name of the expected exception.
-	 * @param int $expectedErrorCode The error code of the expected exception.
-	 * @param string $expectedErrorMessage The error message of the expected exception.
-	 * @dataProvider base64DecodersWithInvalidBase64UriSafeEncodedValuesExceptionsErrorCodesAndErrorMessagesDataProvider
+	 * @param string $validStandardBase64PaddedValue The valid standard Base64 padded value to pass.
+	 * @param string $expectedDecodedValue The expected decoded value.
 	 */
-	public function testDecodeUriSafeThrowsExceptionOnError( Base64DecoderInterface $base64Decoder, string $invalidUriSafeEncodedValue, string $expectedExceptionClass, int $expectedErrorCode, string $expectedErrorMessage ): void
+	#[DataProviderExternal( Base64DecodersWithValidStandardBase64PaddedValueAndExpectedDecodedValueDataProvider::class, 'provideData' )]
+	public function testIfMethodDecodeFromStandardDecodesValidStandardBase64PaddedValueCorrectly( Base64DecoderInterface $base64Decoder, string $validStandardBase64PaddedValue, string $expectedDecodedValue ): void
 	{
-		$this->expectException( $expectedExceptionClass );
-		$this->expectExceptionCode( $expectedErrorCode );
-		$this->expectExceptionMessage( $expectedErrorMessage );
+		$resultedDecodedValue = $base64Decoder->decodeFromStandard( $validStandardBase64PaddedValue );
 
-		$base64Decoder->decodeUriSafe( $invalidUriSafeEncodedValue );
+		static::assertEquals( $expectedDecodedValue, $resultedDecodedValue );
+	}
+
+	/**
+	 * Tests if the method `Base64DecoderInterface::decodeFromUriSafe()` throws a `CodeKandis\Base64Codec\InvalidUriSafeBase64ValueExceptionInterface` if a value is not a URI safe Base64 value.
+	 * @param Base64DecoderInterface $base64Decoder The Base64 decoder to test.
+	 * @param string $invalidUriSafeBase64Value The invalid URI safe Base64 value to pass.
+	 * @param string $expectedThrowableClassName The class name of the expected throwable.
+	 * @param string $expectedThrowableMessage The message of the expected throwable.
+	 */
+	#[DataProviderExternal( Base64DecodersWithInvalidUriSafeBase64ValueExpectedThrowableClassNameAndExpectedThrowableMessageDataProvider::class, 'provideData' )]
+	public function testIfMethodDecodeFromUriSafeThrowsInvalidUriSafeBase64ValueExceptionInterfaceOnInvalidUriSafeBase64Value( Base64DecoderInterface $base64Decoder, string $invalidUriSafeBase64Value, string $expectedThrowableClassName, string $expectedThrowableMessage ): void
+	{
+		try
+		{
+			$base64Decoder->decodeFromUriSafe( $invalidUriSafeBase64Value );
+		}
+		catch ( Throwable $throwable )
+		{
+			static::assertInstanceOf( InvalidUriSafeBase64ValueExceptionInterface::class, $throwable );
+			static::assertInstanceOf( $expectedThrowableClassName, $throwable );
+			static::assertSame(
+				$expectedThrowableMessage,
+				$throwable->getMessage()
+			);
+		}
+	}
+
+	/**
+	 * Tests if the method `Base64DecoderInterface::decodeFromUriSafe()` decodes a URI safe Base64 value correctly.
+	 * @param Base64DecoderInterface $base64Decoder The Base64 decoder to test.
+	 * @param string $validUriSafeBase64Value The valid URI safe Base64 value to pass.
+	 * @param string $expectedDecodedValue The expected decoded value.
+	 */
+	#[DataProviderExternal( Base64DecodersWithValidUriSafeBase64ValueAndExpectedDecodedValueDataProvider::class, 'provideData' )]
+	public function testIfMethodDecodeUriSafeDecodesValidUriSafeBase64ValuesCorrectly( Base64DecoderInterface $base64Decoder, string $validUriSafeBase64Value, string $expectedDecodedValue ): void
+	{
+		$resultedDecodedValue = $base64Decoder->decodeFromUriSafe( $validUriSafeBase64Value );
+
+		static::assertEquals( $expectedDecodedValue, $resultedDecodedValue );
 	}
 }
