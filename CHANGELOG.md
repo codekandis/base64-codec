@@ -5,6 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [keep a changelog][xtlink-keep-a-changelog]
 and this project adheres to [Semantic Versioning 2.0.0][xtlink-semantic-versioning].
 
+## [3.0.0] - 2024-02-17
+
+### Fixed
+
+* encoding
+* method naming
+* PHPDoc
+
+### Changed
+
+* composer package
+  * description
+  * keywords
+  * require
+    * `php` [>=8.3]
+  * require-dev
+    * `codekandis/phpunit` [^5.0.0]
+* added
+  * version
+  * require-dev
+    * `rector/rector` [^0.18.5]
+  * autoload-dev
+    * psr-4
+      * `CodeKandis\Base64Codec\Build\`
+        * `build/`
+* PHPUnit tests
+  * configuration
+  * externalized data providers
+* error and exception handling
+* `CODE_OF_CONDUCT.md`
+* `README.md`
+  * PHP version `8.3`
+  * documentation
+
+### Added
+
+* type hints
+* `Override` attributes
+* rector
+  * configuration script
+  * shell script
+
+[3.0.0]: https://github.com/codekandis/json-codec/compare/2.1.0..3.0.0
+
+---
 ## [2.1.0] - 2021-01-18
 
 ### Added
