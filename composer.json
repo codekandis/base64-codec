@@ -1,7 +1,7 @@
 {
 	"name": "codekandis/base64-codec",
 	"description": "`codekandis/base64-codec` is a library providing a codec to encode into and decode from Base64 in an object oriented way.",
-	"version": "dev-development",
+	"version": "3.0.0",
 	"keywords": [
 		"php",
 		"base64 codec",
