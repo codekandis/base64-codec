@@ -70,7 +70,7 @@ $uriSafeBase64Value = 'OMOHw4I8w4c8w6_Cr8Oxw5c3OEI-w69Bw4vCoTRXw69jwqfDv1DDrljDu
 
 
 
-[xtlink-version-badge]: https://img.shields.io/badge/version-2.1.0-blue.svg
+[xtlink-version-badge]: https://img.shields.io/badge/version-3.0.0-blue.svg
 [xtlink-license-badge]: https://img.shields.io/badge/license-MIT-yellow.svg
 [xtlink-php-version-badge]: https://img.shields.io/badge/php-%3E%3D%208.3-8892BF.svg
 [xtlink-code-coverage-badge]: https://img.shields.io/badge/coverage-100%25-green.svg
