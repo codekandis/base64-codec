@@ -1,6 +1,7 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use Override;
 use function base64_decode;
 
 /**
@@ -11,20 +12,22 @@ use function base64_decode;
 class Base64Decoder implements Base64DecoderInterface
 {
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
-	public function decode( string $value ): string
+	#[Override]
+	public function decodeFromStandard( string $value ): string
 	{
 		( new Base64FormatGuard() )
-			->guard( $value );
+			->guardStandard( $value );
 
 		return base64_decode( $value, true );
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
-	public function decodeUriSafe( string $value ): string
+	#[Override]
+	public function decodeFromUriSafe( string $value ): string
 	{
 		( new Base64FormatGuard() )
 			->guardUriSafe( $value );
