@@ -2,25 +2,23 @@
 namespace CodeKandis\Base64Codec;
 
 /**
- * Represents the interface of all Base64 encoders.
+ * Represents the interface of any Base64 encoder.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
 interface Base64EncoderInterface
 {
 	/**
-	 * Encodes a value into a Base64 string.
+	 * Encodes a value into a standard Base64 value.
 	 * @param string $value The value to encode.
-	 * @param ?JsonEncoderOptions $options The encoding options.
-	 * @return string The encoded Base64 string.
+	 * @return string The encoded standard Base64 value.
 	 */
-	public function encode( string $value ): string;
+	public function encodeToStandard( string $value ): string;
 
 	/**
-	 * Encodes a value into an URI safe Base64 string.
+	 * Encodes a value into a URI safe Base64 value.
 	 * @param string $value The value to encode.
-	 * @param ?JsonEncoderOptions $options The encoding options.
-	 * @return string The encoded Base64 string.
+	 * @return string The encoded URI safe Base64 value.
 	 */
-	public function encodeUriSafe( string $value ): string;
+	public function encodeToUriSafe( string $value ): string;
 }

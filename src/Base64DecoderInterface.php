@@ -2,26 +2,26 @@
 namespace CodeKandis\Base64Codec;
 
 /**
- * Represents the interface of all Base64 decoders.
+ * Represents the interface of any Base64 decoder.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
 interface Base64DecoderInterface
 {
 	/**
-	 * Decodes a value from a Base64 string.
-	 * @param string $value The Base64 string to decode.
+	 * Decodes a value from a standard Base64 value.
+	 * @param string $value The standard Base64 value to decode.
 	 * @return string The decoded value.
-	 * @throws ValueIsNotBase64FormattedException The value is not Base64 formatted.
-	 * @throws InvalidBase64PaddingException The padding of the value is invalid.
+	 * @throws InvalidStandardBase64ValueExceptionInterface The value is not a standard Base64 value.
+	 * @throws InvalidStandardBase64PaddingExceptionInterface The padding of the standard Base64 value is invalid.
 	 */
-	public function decode( string $value ): string;
+	public function decodeFromStandard( string $value ): string;
 
 	/**
-	 * Decodes a value from an URI safe Base64 string.
-	 * @param string $value The URL safe Base64 string to decode.
+	 * Decodes a value from a URI safe Base64 value.
+	 * @param string $value The URI safe Base64 value to decode.
 	 * @return string The decoded value.
-	 * @throws ValueIsNotBase64UriSafeFormattedException The value is not Base64 URI safe formatted.
+	 * @throws InvalidUriSafeBase64ValueExceptionInterface The value is not a URI safe Base64 value.
 	 */
-	public function decodeUriSafe( string $value ): string;
+	public function decodeFromUriSafe( string $value ): string;
 }

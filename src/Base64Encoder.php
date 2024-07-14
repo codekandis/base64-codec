@@ -1,6 +1,8 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use CodeKandis\Types\BaseObject;
+use Override;
 use function base64_encode;
 
 /**
@@ -8,22 +10,24 @@ use function base64_encode;
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
-class Base64Encoder implements Base64EncoderInterface
+class Base64Encoder extends BaseObject implements Base64EncoderInterface
 {
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
-	public function encode( string $value ): string
+	#[Override]
+	public function encodeToStandard( string $value ): string
 	{
 		return base64_encode( $value );
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
-	public function encodeUriSafe( string $value ): string
+	#[Override]
+	public function encodeToUriSafe( string $value ): string
 	{
-		$encodedValue = $this->encode( $value );
+		$encodedValue = base64_encode( $value );
 
 		return ( new Base64FormatConverter() )
 			->convertToUriSafe( $encodedValue );

@@ -1,62 +1,44 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec\Tests\UnitTests;
 
-use ArrayIterator;
 use CodeKandis\Base64Codec\Base64EncoderInterface;
-use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64EncoderInterfaceTest\Base64EncodersWithDecodedValuesAndBase64UriSafeEncodedValuesDataProvider;
-use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64EncoderInterfaceTest\Base64EncodersWithDecodedValuesAndBased64EncodedValuesDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64EncoderInterfaceTest\Base64EncodersWithUnencodedValueAndExpectedStandardBased64PaddedValueDataProvider;
+use CodeKandis\Base64Codec\Tests\DataProviders\UnitTests\Base64EncoderInterfaceTest\Base64EncodersWithUnencodedValueAndExpectedUriSafeBased64ValueDataProvider;
 use CodeKandis\PhpUnit\TestCase;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 
 /**
- * Represents the test case to test objects against the `Base64EncoderInterface`.
+ * Represents the test case of `CodeKandis\Base64Codec\Base64EncoderInterface`.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
 class Base64EncoderInterfaceTest extends TestCase
 {
 	/**
-	 * Provides initiated Base64 encoders with decoded values and Base64 encoded values.
-	 * @return ArrayIterator The initiated Base64 encoders with decoded values and Base64 encoded values.
-	 */
-	public function base64EncodersWithDecodedValuesAndBased64EncodedValuesDataProvider(): ArrayIterator
-	{
-		return new Base64EncodersWithDecodedValuesAndBased64EncodedValuesDataProvider();
-	}
-
-	/**
-	 * Tests if `Base64EncoderInterface::encode()` encodes correctly.
+	 * Tests if the method `Base64EncoderInterface::encodeToStandard()` encodes a value to a standard Base64 value correctly.
 	 * @param Base64EncoderInterface $base64Encoder The Base64 encoder to test.
-	 * @param mixed $value The value to encode.
-	 * @param string $expectedEncodedValue The expected encoded value.
-	 * @dataProvider base64EncodersWithDecodedValuesAndBased64EncodedValuesDataProvider
+	 * @param string $unencodedValue The unencoded value to pass.
+	 * @param string $expectedStandardBase64PaddedValue The expected standard Base64 padded value.
 	 */
-	public function testEncodeEncodesCorrectly( Base64EncoderInterface $base64Encoder, $value, string $expectedEncodedValue ): void
+	#[DataProviderExternal( Base64EncodersWithUnencodedValueAndExpectedStandardBased64PaddedValueDataProvider::class, 'provideData' )]
+	public function testIfMethodEncodeToStandardEncodesToStandardBase64ValueCorrectly( Base64EncoderInterface $base64Encoder, string $unencodedValue, string $expectedStandardBase64PaddedValue ): void
 	{
-		$resultedEncodedValue = $base64Encoder->encode( $value );
+		$resultedEncodedValue = $base64Encoder->encodeToStandard( $unencodedValue );
 
-		$this->assertSame( $expectedEncodedValue, $resultedEncodedValue );
+		static::assertSame( $expectedStandardBase64PaddedValue, $resultedEncodedValue );
 	}
 
 	/**
-	 * Provides initiated Base64 encoders with decoded values and Base64 URI safe encoded values.
-	 * @return ArrayIterator The initiated Base64 encoders with decoded values and Base64 URI safe encoded values.
-	 */
-	public function base64EncodersWithDecodedValuesAndBase64UriSafeEncodedValuesDataProvider(): ArrayIterator
-	{
-		return new Base64EncodersWithDecodedValuesAndBase64UriSafeEncodedValuesDataProvider();
-	}
-
-	/**
-	 * Tests if `Base64EncoderInterface::encode()` encodes correctly.
+	 * Tests if the method `Base64EncoderInterface::encodeToUriSafe()` encodes a value to a URI safe Base64 value correctly.
 	 * @param Base64EncoderInterface $base64Encoder The Base64 encoder to test.
-	 * @param mixed $value The value to encode URI safe.
-	 * @param string $expectedUriSafeEncodedValue The expected URI safe encoded value.
-	 * @dataProvider base64EncodersWithDecodedValuesAndBase64UriSafeEncodedValuesDataProvider
+	 * @param string $unencodedValue The unencoded value to pass.
+	 * @param string $expectedUriSafeBase64Value The expected URI safe Base64 value.
 	 */
-	public function testEncodeUriSafeEncodesCorrectly( Base64EncoderInterface $base64Encoder, $value, string $expectedUriSafeEncodedValue ): void
+	#[DataProviderExternal( Base64EncodersWithUnencodedValueAndExpectedUriSafeBased64ValueDataProvider::class, 'provideData' )]
+	public function testIfMethodEncodeToStandardEncodesToUriSafeBase64ValueCorrectly( Base64EncoderInterface $base64Encoder, string $unencodedValue, string $expectedUriSafeBase64Value ): void
 	{
-		$resultedEncodedValue = $base64Encoder->encodeUriSafe( $value );
+		$resultedEncodedValue = $base64Encoder->encodeToUriSafe( $unencodedValue );
 
-		$this->assertSame( $expectedUriSafeEncodedValue, $resultedEncodedValue );
+		static::assertSame( $expectedUriSafeBase64Value, $resultedEncodedValue );
 	}
 }

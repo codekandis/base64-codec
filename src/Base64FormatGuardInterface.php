@@ -2,24 +2,24 @@
 namespace CodeKandis\Base64Codec;
 
 /**
- * Represents the interface of all Base64 format guards.
+ * Represents the interface of any Base64 format guard.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
 interface Base64FormatGuardInterface
 {
 	/**
-	 * Guards if a value is Base64 formatted and its padding is valid.
+	 * Guards if a value is standard Base64 value and its padding is valid.
 	 * @param string $value The value to guard.
-	 * @throws Base64Exception The value is not Base64 formatted.
-	 * @throws Base64Exception The padding of the value is invalid.
+	 * @throws InvalidStandardBase64ValueExceptionInterface The value is not a standard Base64 value.
+	 * @throws InvalidStandardBase64PaddingExceptionInterface The padding of the standard Base64 value is invalid.
 	 */
-	public function guard( string $value ): void;
+	public function guardStandard( string $value ): void;
 
 	/**
-	 * Guards if a value is Base64 URI safe formatted.
+	 * Guards if a value is a URI safe Base64 value.
 	 * @param string $value The value to guard.
-	 * @throws Base64Exception The value is not Base64 URI safe formatted.
+	 * @throws InvalidUriSafeBase64ValueExceptionInterface The value is not a URI safe Base64 value.
 	 */
 	public function guardUriSafe( string $value ): void;
 }
