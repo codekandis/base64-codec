@@ -1,12 +1,14 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use CodeKandis\Types\BaseObject;
+
 /**
  * Represents the valid Base64 formats.
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
-abstract class Base64Formats
+abstract class Base64Formats extends BaseObject
 {
 	/**
 	 * Stores the regular expression of the Base64 standard format.

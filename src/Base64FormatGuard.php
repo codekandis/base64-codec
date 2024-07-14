@@ -1,6 +1,7 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use CodeKandis\Types\BaseObject;
 use Override;
 use function preg_match;
 use function strlen;
@@ -11,7 +12,7 @@ use function substr;
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
-class Base64FormatGuard implements Base64FormatGuardInterface
+class Base64FormatGuard extends BaseObject implements Base64FormatGuardInterface
 {
 	/**
 	 * Guards if a value is Base64 formatted.

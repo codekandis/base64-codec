@@ -1,6 +1,7 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use CodeKandis\Types\BaseObject;
 use Override;
 use function base64_encode;
 
@@ -9,7 +10,7 @@ use function base64_encode;
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
-class Base64Encoder implements Base64EncoderInterface
+class Base64Encoder extends BaseObject implements Base64EncoderInterface
 {
 	/**
 	 * {@inheritdoc}

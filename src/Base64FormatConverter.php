@@ -1,6 +1,7 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Base64Codec;
 
+use CodeKandis\Types\BaseObject;
 use Override;
 use function str_replace;
 
@@ -9,7 +10,7 @@ use function str_replace;
  * @package codekandis/base64-codec
  * @author Christian Ramelow <info@codekandis.net>
  */
-class Base64FormatConverter implements Base64FormatConverterInterface
+class Base64FormatConverter extends BaseObject implements Base64FormatConverterInterface
 {
 	/**
 	 * @inheritDoc
